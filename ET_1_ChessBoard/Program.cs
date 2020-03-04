@@ -15,18 +15,21 @@ namespace ET_1_ChessBoard
     {
         static void Main(string[] args)
         {
-            ProgramParams progParams;
+            string validResult = Validator.AreParamsValid(args);
 
-            if (!ProgramParams.TryParse(args, out progParams))
+            if (!String.IsNullOrEmpty(validResult))
             {
-                Console.WriteLine(ProgramParams.GetInstruction());
+                Console.WriteLine(validResult);
+                Console.WriteLine(Validator.GetInstruction());
                 Console.ReadKey();
                 return;
-            }       
+            }
+            ProgramParams progParams = new ProgramParams(args);
 
             ChessBoard chessBoard = new ChessBoard(progParams.Length, progParams.Height);
-            ChessBoardBuilder printer = new ChessBoardBuilder();
-            Console.WriteLine(printer.BuildChessBoard(chessBoard, new SimpleConsolePrinter(progParams.WhiteCell, progParams.BlackCell))); 
+            chessBoard.Draw(progParams.WhiteCell, progParams.BlackCell);
+            //ChessBoardBuilder printer = new ChessBoardBuilder();
+            //Console.WriteLine(printer.BuildChessBoard(chessBoard, new SimpleConsolePrinter(progParams.WhiteCell, progParams.BlackCell))); 
 
             Console.ReadKey();
         }    
