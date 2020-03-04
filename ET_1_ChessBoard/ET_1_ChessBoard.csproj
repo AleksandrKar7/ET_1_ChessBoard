@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C69E8677-B896-485B-A828-3C8F731B40E6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ET_1_ChessTable</RootNamespace>
-    <AssemblyName>ET_1_ChessTable</AssemblyName>
+    <RootNamespace>ET_1_ChessBoard</RootNamespace>
+    <AssemblyName>ET_1_ChessBoard</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,8 +47,8 @@
   <ItemGroup>
     <Compile Include="ChessBoard.cs" />
     <Compile Include="ChessBoardBuilder.cs" />
-    <Compile Include="ConsolePrinter.cs" />
-    <Compile Include="IChessBoardPrinter.cs" />
+    <Compile Include="SimpleConsolePrinter.cs" />
+    <Compile Include="IChessBoardBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

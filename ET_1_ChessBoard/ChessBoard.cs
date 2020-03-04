@@ -1,6 +1,6 @@
 ﻿namespace ET_1_ChessBoard
 {
-    class ChessBoard
+    public class ChessBoard
     {
         public int Length { get; set; }
 

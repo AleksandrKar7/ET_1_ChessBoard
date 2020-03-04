@@ -13,7 +13,6 @@ namespace ET_1_ChessBoard
 */
     class Program
     {
-
         static void Main(string[] args)
         {
             ProgramParams progParams;
@@ -26,8 +25,8 @@ namespace ET_1_ChessBoard
             }       
 
             ChessBoard chessBoard = new ChessBoard(progParams.Length, progParams.Height);
-            IChessBoardPrinter printer = new ConsolePrinter();
-            printer.PrintChessBoard(chessBoard, progParams.WhiteCell, progParams.BlackCell);
+            ChessBoardBuilder printer = new ChessBoardBuilder();
+            Console.WriteLine(printer.BuildChessBoard(chessBoard, new SimpleConsolePrinter(progParams.WhiteCell, progParams.BlackCell))); 
 
             Console.ReadKey();
         }    
