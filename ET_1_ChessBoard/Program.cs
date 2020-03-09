@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ET_1_ChessBoard.Logics.Boards;
+using System;
 
 namespace ET_1_ChessBoard
 {
@@ -15,23 +16,7 @@ namespace ET_1_ChessBoard
     {
         static void Main(string[] args)
         {
-            string validResult = Validator.AreParamsValid(args);
-
-            if (!String.IsNullOrEmpty(validResult))
-            {
-                Console.WriteLine(validResult);
-                Console.WriteLine(Validator.GetInstruction());
-                Console.ReadKey();
-                return;
-            }
-            ProgramParams progParams = new ProgramParams(args);
-
-            ChessBoard chessBoard = new ChessBoard(progParams.Length, progParams.Height);
-            chessBoard.Draw(progParams.WhiteCell, progParams.BlackCell);
-            //ChessBoardBuilder printer = new ChessBoardBuilder();
-            //Console.WriteLine(printer.BuildChessBoard(chessBoard, new SimpleConsolePrinter(progParams.WhiteCell, progParams.BlackCell))); 
-
-            Console.ReadKey();
+            ConsoleMenu.ShowConsoleMenu(args);
         }    
     }
 }

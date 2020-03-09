@@ -1,23 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ET_1_ChessBoard
+namespace ET_1_ChessBoard.Logics.Boards
 {
-    public class ChessBoard
+    public class Board
     {
-        public Cell[,] Cells { get; private set; }
+        public int Rows { get; set; }
+        public int Columns { get; set; }
+        public Cell[,] Cells { get; protected set; }
 
-        public ChessBoard(int length, int height)
+        public Board(int length, int height)
         {
-            Cells = new Cell[length, height];
-            InitChessBoard();
+            Rows = length;
+            Columns = height;
         }
 
-        private void InitChessBoard()
+        public virtual void InitBoard()
         {
             int x = 0;
             int y = 0;
             bool isNextWhite = true;
-            while(y <= Cells.GetLength(1))
+
+            Cells = new Cell[Rows, Columns];
+            while (y <= Cells.GetLength(1))
             {
                 if (x < Cells.GetLength(0) && y == Cells.GetLength(1))
                 {
@@ -52,38 +60,7 @@ namespace ET_1_ChessBoard
                     Cells[x, y] = new Cell(x, y, Cell.CellColor.Black);
                     isNextWhite = true;
                 }
-
                 y++;
-
-            }
-        }
-
-        public void Draw(char white, char black)
-        {
-            int x = 0;
-            int y = 0;
-            while (y < Cells.GetLength(1))
-            {
-                if (Cells[x, y].Color == Cell.CellColor.White)
-                {
-                    Console.Write(white);
-                }
-                else
-                {
-                    Console.Write(black);
-                }
-
-                y++;
-                if (x < Cells.GetLength(0) && y == Cells.GetLength(1))
-                {
-                    x++;
-                    y = 0;
-                    Console.WriteLine();
-                }
-                if (x == Cells.GetLength(0))
-                {
-                    break;
-                }
             }
         }
     }
