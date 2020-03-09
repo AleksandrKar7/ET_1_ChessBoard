@@ -17,7 +17,7 @@ namespace UnitTests.BoardTest
             Type expected = new OverflowException().GetType();
 
             //act
-            TestDelegate actual = () => board.InitBoard();
+            TestDelegate actual = () => board.InitCells();
 
             //assert
             Assert.Throws(expected, actual);
@@ -30,7 +30,7 @@ namespace UnitTests.BoardTest
             Type expected = new OverflowException().GetType();
 
             //act
-            TestDelegate actual = () => board.InitBoard();
+            TestDelegate actual = () => board.InitCells();
 
             //assert
             Assert.Throws(expected, actual);
@@ -51,7 +51,7 @@ namespace UnitTests.BoardTest
 
             //act
             ChessBoard actual = new ChessBoard(rows, columns);
-            actual.InitBoard();
+            actual.InitCells();
 
             //assert
             bool result = true;
@@ -93,7 +93,7 @@ namespace UnitTests.BoardTest
 
             //act
             ChessBoard actual = new ChessBoard(rows, columns);
-            actual.SetStandardFiguresPlacement();
+            actual.SetStandardChessFigures();
 
             //assert
             bool result = true;

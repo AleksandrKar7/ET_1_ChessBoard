@@ -16,7 +16,7 @@ namespace ET_1_ChessBoard.Logics.Boards
             
         }
 
-        public void SetStandardFiguresPlacement()
+        public void SetStandardChessFigures()
         {
             Figures = new ChessFigure[Rows, Columns];
             int x = 0;
@@ -37,26 +37,30 @@ namespace ET_1_ChessBoard.Logics.Boards
                 if (x == 0)
                 {
                     Figures[x, y] = new ChessFigure(x, y,
-                        ChessFigure.FigureType.White | GetMainFigureType(y));
+                        ChessFigure.FigureType.White | 
+                        GetMainFigureType(y));
                 }
                 //Set white pawns
                 if (x == 1 && y < StandardChessBoardSize)
                 {
                     Figures[x, y] = new ChessFigure(x, y,
-                       ChessFigure.FigureType.White | ChessFigure.FigureType.Pawn);
+                       ChessFigure.FigureType.White | 
+                       ChessFigure.FigureType.Pawn);
                 }
 
                 //Set black pawns
                 if (x == Figures.GetLength(0) - 2 && Figures.GetLength(0) >= 3)
                 {
                     Figures[x, y] = new ChessFigure(x, y,
-                       ChessFigure.FigureType.Black | ChessFigure.FigureType.Pawn);
+                       ChessFigure.FigureType.Black | 
+                       ChessFigure.FigureType.Pawn);
                 }
                 //Set black main figures
                 if (x == Figures.GetLength(0) - 1 && Figures.GetLength(0) >= 4)
                 {
                     Figures[x, y] = new ChessFigure(x, y,
-                        ChessFigure.FigureType.Black | GetMainFigureType(y));
+                        ChessFigure.FigureType.Black | 
+                        GetMainFigureType(y));
                 }
 
                 y++;

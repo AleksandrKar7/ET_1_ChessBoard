@@ -18,7 +18,7 @@ namespace ET_1_ChessBoard.Logics.Boards
             Columns = height;
         }
 
-        public virtual void InitBoard()
+        public virtual void InitCells()
         {
             int x = 0;
             int y = 0;

@@ -8,14 +8,16 @@ namespace ET_1_ChessBoard.Logics.Printers
 {
     static class ConsolePrinter
     {
-        private static readonly Dictionary<Cell.CellColor, ConsoleColor> standardCellsColor =
+        private static Dictionary<Cell.CellColor, ConsoleColor>
+            standardCellsColor =
             new Dictionary<Cell.CellColor, ConsoleColor>()
             {
                 { Cell.CellColor.Black, ConsoleColor.DarkGray },
                 { Cell.CellColor.White, ConsoleColor.White}
             };
 
-        static public readonly Dictionary<ChessFigure.FigureType, char> standardFiguresSymbol =
+        private static Dictionary<ChessFigure.FigureType, char>
+            standardFiguresSymbol =
             new Dictionary<ChessFigure.FigureType, char> 
             {
                 { ChessFigure.FigureType.Pawn, 'p' },
@@ -26,20 +28,26 @@ namespace ET_1_ChessBoard.Logics.Printers
                 { ChessFigure.FigureType.King, 'K' }
             };
 
-        static public readonly Dictionary<ChessFigure.FigureType, ConsoleColor> standardFiguresColor =
+        private static Dictionary<ChessFigure.FigureType, ConsoleColor>
+            standardFiguresColor =
             new Dictionary<ChessFigure.FigureType, ConsoleColor>
             {
                 { ChessFigure.FigureType.White, ConsoleColor.DarkYellow },
                 { ChessFigure.FigureType.Black, ConsoleColor.Black }
             };
 
-        static public void PrintEmptyBoard(Board board)
+        public static void PrintEmptyBoard(Board board)
         {
             PrintEmptyBoard(board, standardCellsColor);
         }
-        static public void PrintEmptyBoard(Board board,
+        public static void PrintEmptyBoard(Board board,
             Dictionary<Cell.CellColor, ConsoleColor> cellsColor)
         {
+            if (board == null)
+            {
+                throw new NullReferenceException("Board is null");
+            }
+
             int x = 0;
             int y = 0;
             while (y < board.Cells.GetLength(1))
@@ -48,7 +56,8 @@ namespace ET_1_ChessBoard.Logics.Printers
                 Console.Write(" ");
 
                 y++;
-                if (x < board.Cells.GetLength(0) && y == board.Cells.GetLength(1))
+                if (x < board.Cells.GetLength(0) &&
+                    y == board.Cells.GetLength(1))
                 {
                     x++;
                     y = 0;
@@ -62,31 +71,37 @@ namespace ET_1_ChessBoard.Logics.Printers
             Console.BackgroundColor = ConsoleColor.Black;
         }
 
-        static public void PrintChessBoard(ChessBoard board)
+        public static void PrintChessBoard(ChessBoard board)
         {
             PrintChessBoard(board, standardCellsColor,
                 standardFiguresColor, standardFiguresSymbol);
         }
 
-        static public void PrintChessBoard(ChessBoard board,
-    Dictionary<Cell.CellColor, ConsoleColor> cellsColor)
+        public static void PrintChessBoard(ChessBoard board,
+            Dictionary<Cell.CellColor, ConsoleColor> cellsColor)
         {
             PrintChessBoard(board, cellsColor,
                 standardFiguresColor, standardFiguresSymbol);
         }
 
-        static public void PrintChessBoard(ChessBoard board,
+        public static void PrintChessBoard(ChessBoard board,
             Dictionary<Cell.CellColor, ConsoleColor> cellsColor,
             Dictionary<ChessFigure.FigureType, ConsoleColor> figuresColor)
         {
-            PrintChessBoard(board, cellsColor, figuresColor, standardFiguresSymbol);
+            PrintChessBoard(board, cellsColor, figuresColor,
+                standardFiguresSymbol);
         }
 
-        static public void PrintChessBoard(ChessBoard board,
+        public static void PrintChessBoard(ChessBoard board,
             Dictionary<Cell.CellColor, ConsoleColor> cellsColor,
             Dictionary<ChessFigure.FigureType, ConsoleColor> figuresColor,
             Dictionary<ChessFigure.FigureType, char> figuresSymbol)
         {
+            if(board == null)
+            {
+                throw new NullReferenceException("Board is null");
+            }
+
             int x = 0;
             int y = 0;
             char symbol;
@@ -95,18 +110,22 @@ namespace ET_1_ChessBoard.Logics.Printers
                 Console.BackgroundColor = cellsColor[board.Cells[x, y].Color];
 
                 if (board.Figures[x, y] != null &&
-                    board.Figures[x, y].Type.HasFlag(ChessFigure.FigureType.White))
+                    board.Figures[x, y].Type.HasFlag(
+                        ChessFigure.FigureType.White))
                 {
-                    Console.ForegroundColor = figuresColor[ChessFigure.FigureType.White];
+                    Console.ForegroundColor = 
+                        figuresColor[ChessFigure.FigureType.White];
 
                     symbol = board.Figures[x, y] != null ?
                         figuresSymbol[board.Figures[x, y].Type ^
                         ChessFigure.FigureType.White] : ' ';
                 }
                 else if (board.Figures[x, y] != null && 
-                    board.Figures[x, y].Type.HasFlag(ChessFigure.FigureType.Black))
+                    board.Figures[x, y].Type.HasFlag(
+                        ChessFigure.FigureType.Black))
                 {
-                    Console.ForegroundColor = figuresColor[ChessFigure.FigureType.Black];
+                    Console.ForegroundColor = 
+                        figuresColor[ChessFigure.FigureType.Black];
 
                     symbol = board.Figures[x, y] != null ?
                         figuresSymbol[board.Figures[x, y].Type ^
@@ -119,7 +138,8 @@ namespace ET_1_ChessBoard.Logics.Printers
                 Console.Write(symbol);
 
                 y++;
-                if (x < board.Cells.GetLength(0) && y == board.Cells.GetLength(1))
+                if (x < board.Cells.GetLength(0) && 
+                    y == board.Cells.GetLength(1))
                 {
                     x++;
                     y = 0;

@@ -36,16 +36,30 @@ namespace ET_1_ChessBoard
                 }
 
                 InputData inputData = Parser.Parse(inputParams);
-                Board board = new Board(inputData.Length, inputData.Height);
-                board.InitBoard();
-                ConsolePrinter.PrintEmptyBoard(board);
 
-                //ChessBoard board = new ChessBoard(inputData.Length, inputData.Height);
-                //board.InitBoard();
-                //board.SetStandardFiguresPlacement();
-                //ConsolePrinter.PrintChessBoard(board);
+                int result = AskMenuItem("Choose board type",
+                    new string[]{ "Empty board", "Chess board with pieces"});
 
-                if (AskBoolValue("Do you want to continue?", new string[] { "YES", "Y" }))
+                switch (result)
+                {
+                    case 1:
+                        Board board = new Board(inputData.Length,
+                            inputData.Height);
+                        board.InitCells();
+                        ConsolePrinter.PrintEmptyBoard(board);
+                        break;
+
+                    case 2:
+                        ChessBoard chessBoard = new ChessBoard(inputData.Length,
+                            inputData.Height);
+                        chessBoard.InitCells();
+                        chessBoard.SetStandardChessFigures();
+                        ConsolePrinter.PrintChessBoard(chessBoard);
+                        break;
+                }   
+
+                if (AskBoolValue("Do you want to continue?", 
+                    new string[] { "YES", "Y" }))
                 {
                     isNewTry = true;
                 }
@@ -64,6 +78,33 @@ namespace ET_1_ChessBoard
             result[0] = Console.ReadLine();
             Console.WriteLine("Enter the height for board");
             result[1] = Console.ReadLine();
+
+            return result;
+        }
+
+        public static int AskMenuItem(string message, string[] menuItems)
+        {
+            int i = 1;
+            int result;
+            Console.WriteLine(message);
+            foreach(string item in menuItems)
+            {
+                Console.WriteLine(i + " - " + item);
+                i++;
+            }
+
+            do
+            {
+                Int32.TryParse(Console.ReadLine(), out result);
+                if(result >= 1 && result <= menuItems.Length)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Wrong item. Choose again");
+                }
+            } while (true);
 
             return result;
         }

@@ -16,7 +16,7 @@ namespace UnitTests.BoardTest
             Type expected = new OverflowException().GetType();
 
             //act
-            TestDelegate actual = () => board.InitBoard();
+            TestDelegate actual = () => board.InitCells();
 
             //assert
             Assert.Throws(expected, actual);
@@ -29,7 +29,7 @@ namespace UnitTests.BoardTest
             Type expected = new OverflowException().GetType();
 
             //act
-            TestDelegate actual = () => board.InitBoard();
+            TestDelegate actual = () => board.InitCells();
 
             //assert
             Assert.Throws(expected, actual);
@@ -50,7 +50,7 @@ namespace UnitTests.BoardTest
 
             //act
             Board actual = new Board(rows, columns);
-            actual.InitBoard();
+            actual.InitCells();
 
             //assert
             bool result = true;
