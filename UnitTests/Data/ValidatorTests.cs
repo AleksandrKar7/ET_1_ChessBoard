@@ -1,6 +1,4 @@
-﻿using System;
-
-using ET_1_ChessBoard.Data;
+﻿using ET_1_ChessBoard.Data;
 using NUnit.Framework;
 
 namespace UnitTests.Data

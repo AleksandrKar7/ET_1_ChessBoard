@@ -1,6 +1,4 @@
-﻿using ET_1_ChessBoard.Logics.Boards;
-using System;
-
+﻿
 namespace ET_1_ChessBoard
 {
 /*

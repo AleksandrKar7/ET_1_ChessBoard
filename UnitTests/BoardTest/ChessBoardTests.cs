@@ -93,7 +93,7 @@ namespace UnitTests.BoardTest
 
             //act
             ChessBoard actual = new ChessBoard(rows, columns);
-            actual.SetStandardChessFigures();
+            actual.InitChessFigures();
 
             //assert
             bool result = true;

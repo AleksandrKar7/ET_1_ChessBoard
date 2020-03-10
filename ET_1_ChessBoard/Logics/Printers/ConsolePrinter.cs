@@ -8,6 +8,7 @@ namespace ET_1_ChessBoard.Logics.Printers
 {
     static class ConsolePrinter
     {
+        #region private 
         private static Dictionary<Cell.CellColor, ConsoleColor>
             standardCellsColor =
             new Dictionary<Cell.CellColor, ConsoleColor>()
@@ -35,6 +36,7 @@ namespace ET_1_ChessBoard.Logics.Printers
                 { ChessFigure.FigureType.White, ConsoleColor.DarkYellow },
                 { ChessFigure.FigureType.Black, ConsoleColor.Black }
             };
+        #endregion
 
         public static void PrintEmptyBoard(Board board)
         {

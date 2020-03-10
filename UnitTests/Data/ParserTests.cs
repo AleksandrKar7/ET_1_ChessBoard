@@ -56,7 +56,7 @@ namespace UnitTests.Data
             double expected = 2;
 
             //act
-            double actual = Parser.Parse(args).Length;
+            double actual = Parser.Parse(args).NumberOfRows;
 
             //assert
             Assert.AreEqual(expected, actual);
@@ -70,7 +70,7 @@ namespace UnitTests.Data
             double expected = 3;
 
             //act
-            double actual = Parser.Parse(args).Height;
+            double actual = Parser.Parse(args).NumberOfColumns;
 
             //assert
             Assert.AreEqual(expected, actual);

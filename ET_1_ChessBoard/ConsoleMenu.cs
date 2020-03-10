@@ -2,10 +2,7 @@
 using ET_1_ChessBoard.Logics.Boards;
 using ET_1_ChessBoard.Logics.Printers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ET_1_ChessBoard
 {
@@ -43,17 +40,17 @@ namespace ET_1_ChessBoard
                 switch (result)
                 {
                     case 1:
-                        Board board = new Board(inputData.Length,
-                            inputData.Height);
+                        Board board = new Board(inputData.NumberOfRows,
+                            inputData.NumberOfColumns);
                         board.InitCells();
                         ConsolePrinter.PrintEmptyBoard(board);
                         break;
 
                     case 2:
-                        ChessBoard chessBoard = new ChessBoard(inputData.Length,
-                            inputData.Height);
+                        ChessBoard chessBoard = new ChessBoard(
+                            inputData.NumberOfRows, inputData.NumberOfColumns);
                         chessBoard.InitCells();
-                        chessBoard.SetStandardChessFigures();
+                        chessBoard.InitChessFigures();
                         ConsolePrinter.PrintChessBoard(chessBoard);
                         break;
                 }   
@@ -74,9 +71,9 @@ namespace ET_1_ChessBoard
         {
             string[] result = new string[InputData.CountParams];
 
-            Console.WriteLine("Enter the length for board");
+            Console.WriteLine("Enter the number of rows for board");
             result[0] = Console.ReadLine();
-            Console.WriteLine("Enter the height for board");
+            Console.WriteLine("Enter the number of columns for board");
             result[1] = Console.ReadLine();
 
             return result;

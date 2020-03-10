@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace ET_1_ChessBoard.Logics.Boards
 {
     public class Board
     {
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        public int NumberOfRows { get; set; }
+        public int NumberOfColumns { get; set; }
         public Cell[,] Cells { get; protected set; }
 
-        public Board(int length, int height)
+        public Board(int numberOfRows, int numberOfColumns)
         {
-            Rows = length;
-            Columns = height;
+            NumberOfRows = numberOfRows;
+            NumberOfColumns = numberOfColumns;
         }
 
         public virtual void InitCells()
@@ -24,7 +19,7 @@ namespace ET_1_ChessBoard.Logics.Boards
             int y = 0;
             bool isNextWhite = true;
 
-            Cells = new Cell[Rows, Columns];
+            Cells = new Cell[NumberOfRows, NumberOfColumns];
             while (y <= Cells.GetLength(1))
             {
                 if (x < Cells.GetLength(0) && y == Cells.GetLength(1))

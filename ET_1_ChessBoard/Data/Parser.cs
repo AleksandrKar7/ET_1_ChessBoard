@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ET_1_ChessBoard.Data
 {
@@ -23,8 +19,8 @@ namespace ET_1_ChessBoard.Data
 
             return new InputData
             {
-                Length = Int32.Parse(args[0]),
-                Height = Int32.Parse(args[1]),
+                NumberOfRows = Int32.Parse(args[0]),
+                NumberOfColumns = Int32.Parse(args[1]),
             };
         }
     }
